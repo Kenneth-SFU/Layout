@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+<style>
+    :root {
+      --padding: 50px;
+      --padding_h: 50px;
+      --gap_h: 30px;
+      --gap_v: 50px;
+      --marginbottom: 50px;
+      --col_width: 250px;
+    }
+    @media screen and (max-width: 1199px)   {  :root { --padding_h: 30px; }  }
+    @media screen and (max-width: 575px)    {  :root { --padding_h: 20px; --padding: 30px; --gap_v: 30px;}  }
+    
+    html,body { margin-top: 0; margin: 0 1px 0 0; }
+    body { font-family: sans-serif; font-size: 14px;}
+    h2{ font-family: 'Barlow Condensed', sans-serif; font-size: 40px;  line-height: 42px;   
+        letter-spacing: normal;  color: #414042;    margin: 0 0 30px 0;}
+    p { font-family: 'Barlow', sans-serif;   font-size: 18px; line-height: 26px; margin-bottom: 30px; }
+    .text-component { text-align :left; border:1px solid orange; display: block; position: relative;} 
+    .text-component:after{ content:"text component"; color:orange; width:calc(100% - 5px); text-align: right; margin-top:-20px;  position: absolute;}
+    .text-component.pad-top { padding-top: 50px;}
+    img { width: 100%; max-width: 100%;  display: inherit; }
+    
+    #container { max-width: 1820px; margin: 0 auto;}
+    .size-control {
+        resize: horizontal;
+        overflow: auto;
+        position: relative;
+        
+        margin: 0 auto 50px;        padding: 0;
+        max-width:100%;
+        min-width: 300px;        
+        border: 1px solid #e0e0e0;
+        border-width: 0 1px;
+    }    
+    .size-control::after { content: attr(style);}
+    
+    hr { border: 1px solid #eeeeee; margin: 0; }
+    
+    /* ---- Layout Panel ---- */
+    .panel{ /* Mother */
+        container-type: inline-size;        container-name: panel;
+        resize: horizontal;      overflow: auto;
+        max-width:calc(100% - var(--padding_h) - var(--padding_h));        min-width: 252px;
+        padding:var(--padding) var(--padding_h);
+        background-color:#ffebee;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        align-content: flex-start;
+        margin-bottom: var(--marginbottom);
+    }
+    
+    .panel .panel { max-width:100%; padding: 0;}
+    .panel:before { content:"Mother"; position: absolute; top: 5px; left: 5px; color: #cfbec1;}
+    .panel .panel:before { content:"Child"; color: #bccacc;}
+    
+    .last-first .col:last-child { order:-1;}
+    
+    /* Panel in Panel nesting */
+    .panel .panel { margin-bottom: 0; }
+    .panel .panel + .panel { margin-top: var(--gap_v); } /* Add spacing between sibling */
+    
+    /* col */
+    .panel .col{ margin-right: var(--gap_h); } .panel .col:last-child{ margin-right: 0;}
+    .panel .col { width: 100%;}
+    .col        { text-align: center; padding:0; position: relative; }
+    .has-2-col .col { width:calc(50% - (var(--gap_h) / 2) ); }
+    .has-3-col .col { width:calc(33.3% - (var(--gap_h) * 2 / 3) ); }
+    .has-4-col .col { width:calc(25% - (var(--gap_h) * 3 / 4) ); }
+    
+    .w1-2.has-2-col > .col { width:calc(33.3% - (var(--gap_h) / 2) ); }    .w1-2.has-2-col > .col:last-child { width:calc(66.6% - (var(--gap_h) / 2) ); } 
+    .w1-3.has-2-col > .col { width:calc(25% - (var(--gap_h) / 2) ); }      .w1-3.has-2-col > .col:last-child { width:calc(75% - (var(--gap_h) / 2) ); } 
+    
+    .w1-1-2.has-3-col > .col { width:calc(25% - (var(--gap_h) * 2 / 3) );} .w1-1-2.has-3-col > .col:nth-child(3) { width:calc(50% - (var(--gap_h) * 2 / 3) ); } 
+    .w2-1-1.has-3-col > .col { width:calc(25% - (var(--gap_h) * 2 / 3) );} .w2-1-1.has-3-col > .col:nth-child(1) { width:calc(50% - (var(--gap_h) * 2 / 3) ); } 
+    
+    /* Padding switch */
+    .panel.padding-in-column { padding: 0;  max-width: 100%; min-width: 352px;}
+    .panel.padding-in-column > .col{ padding:var(--padding) var(--padding_h); }
+    
+    .padding-in-column.has-2-col > .col{ width: calc(50% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); }
+    .padding-in-column.has-3-col > .col{ width: calc(33.3% - (var(--gap_h) * 2 / 3) - var(--padding_h) - var(--padding_h)); }
+    
+    .padding-in-column.w1-2.has-2-col > .col { width: calc(33.3% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); }    
+    .padding-in-column.w1-2.has-2-col > .col:last-child { width: calc(66.6% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); } 
+    
+    /* No Padding  */
+    .panel.no-padding { padding: 0;  max-width: 100%;}
+    
+    /* col 250px & 250+padding(350)px marker */
+    .col:before {  position:absolute; left: 0; top: 0; width: var(--col_width); height:13px; 
+        border-right: 1px solid #aaa; border-top: 1px solid #aaa; 
+        text-align: right; font-size: 10px; color: #888; }
+    .panel > .col:before {content:"Mother's Col: 250px >";}
+    .panel .panel > .col:before {content:"Child's Col: 250px >";}
+    .padding-in-column > .col:before { width:calc( var(--col_width) + var(--padding_h) + var(--padding_h) );}
+    .padding-in-column.panel > .col:before {content:"Mother's Col: 350px >";}
+
+    
+    /* col color */
+    .col:nth-child(1) {background-color:#f2dfe2;}
+    .col:nth-child(2) {background-color:#e5d3d6;}
+    .col:nth-child(3) {background-color:#d9c7ca;}
+    .col:nth-child(4) {background-color:#cfbec1;}
+    .col .panel { background-color:#ebfdff; }
+    .col .col:nth-child(1) {background-color:#dff0f2}
+    .col .col:nth-child(2) {background-color:#d3e4e5;}
+    .col .col:nth-child(3) {background-color:#c7d7d9;}
+    .col .col:nth-child(4) {background-color:#bccacc;}
+    
+    .panel.grey, .panel.grey > .col { background-color: #f5f5f5; } 
+    .panel.grey .text-component,
+    .panel.col-grey .text-component,
+    .panel.no-color .text-component{ border: 0;} 
+    .panel.grey:before, .panel.grey .text-component:after, .panel.grey > .col:before,
+    .panel.col-grey:before, .panel.col-grey .text-component:after, .panel.col-grey > .col:before,
+    .panel.no-color:before, .panel.no-color .text-component:after, .panel.no-color > .col:before {display: none;}
+    
+    .panel.col-grey { background: none;}
+    .panel.col-grey > .col { background-color: #f5f5f5; }
+    
+    .panel.no-color { background: none;}
+    .panel.no-color > .col { background: none; }
+    
+    
+    /* Stacking */
+    @container panel (max-width: 1090px) { /* 50 [ 250 ] 30 [ 250 ] 30 [ 250 ] 30 [ 250 ] 50  = 1190px(1090px) */        
+        .has-4-col .col { width:calc(50% - (var(--gap_h) / 2) ); } .has-4-col .col:nth-child(2) {margin-right: 0; } .has-4-col .col:nth-child(1n+3) {margin-top: var(--gap_v); }
+        
+        .w1-1-2.has-3-col > .col { width:calc(50% - (var(--gap_h) / 2) ); } .w1-1-2.has-3-col > .col:nth-child(3) { width:100%; margin-top: var(--gap_v); } 
+        .w1-1-2.has-3-col > .col:nth-child(1n+2) { margin-right: 0;}
+        
+        .w2-1-1.has-3-col > .col { width:calc(50% - (var(--gap_h) / 2) );    margin-top: var(--gap_v);}
+        .w2-1-1.has-3-col > .col:nth-child(1) { width:100%; margin-right: 0; margin-top: 0;}        
+        
+        .w1-3.has-2-col > .col, .w1-3.has-2-col > .col:last-child { width:100%; margin-right: 0; } .w1-3.has-2-col > .col:last-child { margin-top: var(--gap_v);}
+    }
+    
+    @container panel (max-width: 810px) { /* 50 [ 250 ] 30 [ 250 ] 30 [ 250 ] 50  = 910px  */                        
+        .w1-2.has-2-col > .col, .w1-2.has-2-col > .col:last-child { width:100%;  margin-right: 0;} 
+        .w1-2.has-2-col > .col:last-child { margin-top: var(--gap_v);}
+        
+        .has-3-col > .col { width:calc(50% - (var(--gap_h) / 2) ); } 
+        .has-3-col:not(.w2-1-1) > .col:nth-child(even) {margin-right: 0;} 
+        .has-3-col:not(.w2-1-1) > .col:last-child {margin-top: var(--gap_v); }
+        
+        .has-3-col.stackfull > .col { width: 100%; margin-right: 0;} .has-3-col.stackfull .col + .col { margin-top: var(--gap_v);}
+        
+        .has-3-col.stack-first > .col:first-child { width:100%; margin-right: 0;} 
+        .has-3-col.stack-first > .col + .col { width:calc(50% - (var(--gap_h) / 2) ); margin-top: var(--gap_v);}
+        .has-3-col.stack-first > .col:nth-child(2) { margin-right: var(--gap_h);}
+    }
+    
+    @container panel (max-width: 530px) { /* 50 [ 250 ] 30 [ 250 ] 50  = 630px */
+        .has-2-col .col { width: 100%; margin-right:0;}   .has-2-col .col + .col { margin-top: var(--gap_v);}
+        .has-3-col .col { width: 100%; margin-right:0;}   .has-3-col .col + .col { margin-top: var(--gap_v);}
+        .has-4-col .col { width: 100%; margin-right:0;}   .has-4-col .col + .col { margin-top: var(--gap_v);}
+        
+        .w1-1-2.has-3-col > .col { width:100%; margin-right: 0; }
+        .w2-1-1.has-3-col > .col { width:100%; margin-right: 0; }
+        
+        .has-3-col.stack-first > .col, .has-3-col.stack-first > .col:nth-child(2), .has-3-col.stack-first > .col + .col { width:100%; margin-right: 0; } 
+    }
+    
+    /* Padding-in-column Stacking */
+    @container panel (max-width: 1110px) { /* [ 250+100 ] 30 [ 250+100 ] 30 [ 250+100 ] 30 [ 250+100 ]  = 1490px */
+        
+    }
+    @container panel (max-width: 1110px) { /* [ 250+100 ] 30 [ 250+100 ] 30 [ 250+100 ]  = 1110px */
+        .padding-in-column.has-3-col > .col { width:calc(50% - (var(--gap_h) / 2) - var(--padding_h) - var(--padding_h) ); } 
+        .padding-in-column.has-3-col:not(.w2-1-1) > .col:nth-child(even) {margin-right: 0;} 
+        .padding-in-column.has-3-col:not(.w2-1-1) > .col:last-child {margin-top: var(--gap_v); }
+        
+        .padding-in-column.w1-2.has-2-col > .col, 
+        .padding-in-column.w1-2.has-2-col > .col:last-child { width: calc(100% - var(--padding_h) - var(--padding_h));  margin-right: 0;} 
+        .padding-in-column.w1-2.has-2-col > .col:last-child { margin-top: var(--gap_v);}
+    }
+    @container panel (max-width: 730px) { /* [ 250+100 ] 30 [ 250+100 ]   = 730px */
+        .padding-in-column.has-3-col > .col { width: 100%; margin-right:0;}   .padding-in-column.has-3-col > .col + .col { margin-top: var(--gap_v);}
+        .padding-in-column.has-2-col > .col { width: 100%; margin-right:0;}   .padding-in-column.has-2-col > .col + .col { margin-top: var(--gap_v);}
+        .padding-in-column.has-4-col > .col { width: 100%; margin-right:0;}   .padding-in-column.has-4-col > .col + .col { margin-top: var(--gap_v);}
+    }
+    
+    
+    
+    /* Marker / Ruler */
+    #break1, #break2, #break3 { position: absolute; left: 0; margin: 0;  height: 35px; border-right: 1px solid red; border-left: 1px solid #999; text-align: right; }
+    #marker { width:100% ; height: 20px;  position: fixed; z-index: 999; background: #efefef; top: 0; margin-left: var(--padding_h);}
+    #break1 { width: calc(1090px - 1px);}
+    #break2 { width: calc(810px - 1px);}
+    #break3 { width: calc(530px - 1px);}
+    
+    /* Dummy content */
+    content { padding: 30px 0; display: block;}
+    hide { display: none;}
+    
+    /* examplebtn */
+    .example_btn { text-decoration: underline; } .example_btn:hover { color:darkred;  cursor: pointer; }
+  
+</style>
+    
+</head>
+<body>
+    <div id="container">
+    <div class="size-control" style="width:1420px;">
+        <div id="marker">
+            <div id="break1">1090px &nbsp;</div>
+            <div id="break2">810px &nbsp;</div>
+            <div id="break3">530px &nbsp;</div>
+        </div>        
+        <h4>2 col</h4>
+        <div class="panel has-2-col">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+        </div>
+        <hr><br>
+        <h4>2 col 33,66%</h4>
+        <div class="panel has-2-col w1-2">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+        </div>
+        <hr><br>
+        <h4>2 col 25,75%</h4>
+        <div class="panel has-2-col w1-3">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+        </div>
+        <hr><br>
+        <h4>3 col - stack: default</h4>
+        <div class="panel has-3-col">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+            <div class="col"><content>3 col<br>3 col</content></div>
+        </div>
+        <hr><br>
+        <h4>3 col - stack: fullwidth</h4>
+        <div class="panel has-3-col stackfull">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+            <div class="col"><content>3 col<br>3 col</content></div>
+        </div>
+        <hr><br>
+        <h4>3 col - stack: stack-first</h4>
+        <div class="panel has-3-col stack-first">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+            <div class="col"><content>3 col<br>3 col</content></div>
+        </div>
+        <hr><br>
+        <h4>4 col</h4>
+        <div class="panel has-4-col">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+            <div class="col"><content>3 col<br>3 col</content></div>
+            <div class="col"><content>4 col<br>4 col</content></div>
+        </div>
+        <hr><br>
+        <h4>3 col 25 25 50</h4>
+        <div class="panel has-3-col w1-1-2">
+            <div class="col"><content>1 col-25%<br>1 col</content></div>
+            <div class="col"><content>2 col-25%<br>2 col</content></div>
+            <div class="col"><content>3 col-50%<br>3 col</content></div>
+        </div>
+        <hr><br>
+        <h4>3 col 50 25 25</h4>
+        <div class="panel has-3-col w2-1-1">
+            <div class="col"><content>1 col-50%<br>1 col</content></div>
+            <div class="col"><content>2 col-25%<br>2 col</content></div>
+            <div class="col"><content>3 col-25%<br>3 col</content></div>
+        </div>
+        <hr><br>
+        
+        
+        <h4>2 col : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
+            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('grey');">Switch</a></h4> 
+        <div class="panel has-2-col">
+            <div class="col">
+                <div class="text-component pad-top">
+                    <h2>Experience Campus Life</h2>
+                    <p>Fall is a great time to visit our Burnaby or Surrey campuses for a tour lead by current SFU students. Hear their experiences firsthand and discover what SFU has to offer.</p>
+                </div>
+            </div>
+            <div class="col"><img alt="Burnaby campus" title="Burnaby campus" src="1698422340470.jpg"></div>
+        </div>
+        <div class="panel has-2-col grey" style="display: none;">
+            <div class="col">
+                <div class="text-component pad-top">
+                    <h2>Experience Campus Life</h2>
+                    <p>Fall is a great time to visit our Burnaby or Surrey campuses for a tour lead by current SFU students. Hear their experiences firsthand and discover what SFU has to offer.</p>
+                </div>
+            </div>
+            <div class="col"><img alt="Burnaby campus" title="Burnaby campus" src="1698422340470.jpg"></div>
+        </div>
+        <hr><br>
+        
+        <h4>3 col - stack: default: Simulate "block grey" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
+            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('grey');">Switch</a></h4>
+        <div class="panel has-3-col">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel has-3-col grey" style="display: none;">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <hr><br>
+        
+
+        
+        <h4>3 col - stack: default: Simulate "col-1-grey col-2-grey col-3-grey block" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> / <a class="example_btn" onclick="$(this).parent().next().toggleClass('col-grey');">Switch</a></h4>
+        <div class="panel has-3-col padding-in-column">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel has-3-col padding-in-column col-grey" style="display: none;">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <hr><br>
+        
+        
+        <h4>3 col - stack: default: Simulate "No padding No block" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
+            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('no-color');">Switch</a></h4>
+        <div class="panel has-3-col no-padding">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel has-3-col no-padding no-color" style="display: none;">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <hr><br>
+        
+
+        
+        <h4>4 col - stack: default: Simulate "No padding No block" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
+            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('no-color');">Switch</a></h4>
+        <div class="panel has-4-col no-padding">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel has-4-col no-padding no-color" style="display: none;">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Graduate Studies</h2>
+                    <p>Take your knowledge to the next level with a graduate degree. Join our research community of critical thinkers, changemakers and passionate problem-solvers.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Lifelong Learning</h2>
+                    <p>Punch up your professional prowess or complete your long-delayed degree program—all without giving up your job.</p>
+                </div>
+            </div>
+        </div>
+        <hr><br>
+        
+        
+        <h4>2 col - stack: default: Simulate "No padding No block"</h4>
+        <div class="panel has-2-col no-padding">
+            <div class="col">
+                <img alt="Burnaby campus" title="Burnaby campus" src="1698422340470.jpg">
+            </div>
+            <div class="col">
+                <img alt="Burnaby campus" title="Burnaby campus" src="1698422340470.jpg">
+            </div>
+        </div>
+        <hr><br>
+        
+        <h4>2 col nested 2 col</h4>
+        <div class="panel has-2-col">
+            <div class="col">
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                </div>
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                </div>
+            </div>
+        </div>
+        <hr><br>
+        <h4>1 col nested 4 col</h4>
+        <div class="panel has-1-col">
+            <div class="col">
+                <div class="panel has-4-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                    <div class="col"><content>3 col<br>3 col</content></div>
+                    <div class="col"><content>4 col<br>4 col</content></div>
+                </div>
+            </div>            
+        </div>
+        <hr><br>
+        <h4>1 col nested 3 col</h4>
+        <div class="panel has-1-col">
+            <div class="col">
+                <div class="panel has-3-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                    <div class="col"><content>3 col<br>3 col</content></div>                    
+                </div>
+            </div>            
+        </div>
+        <hr><br>
+        <h4>2 col - Right nested 3 col</h4>
+        <div class="panel has-2-col w1-2">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col">                
+                <div class="panel has-3-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                    <div class="col"><content>3 col<br>3 col</content></div>
+                    
+                </div>
+            </div>            
+        </div>
+        <hr><br>
+        <hide>
+        <h4>2 col 25,75 - Right nested 3 col</h4>
+        <div class="panel has-2-col w1-3">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col">                
+                <div class="panel has-3-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                    <div class="col"><content>3 col<br>3 col</content></div>
+                    
+                </div>
+            </div>            
+        </div>
+        <hr><br>
+        </hide>
+        
+        <h4>3 col - stack: default: Simulate "col-1-grey col-2-grey col-3-grey block"</h4>
+        <div class="panel has-2-col padding-in-column w1-2">
+            <div class="col">
+                <div class="text-component ">
+                    <h2>Undergraduate Studies</h2>
+                    <p>Our flexible degree programs encourage you to explore your diverse passions.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div> 
+                    <div class="col"><content>1 col<br>1 col</content></div>                   
+                </div>
+            </div>
+        </div>
+        <hr><br>
+        
+    </div>
+</div>
+</body>
+</html>
