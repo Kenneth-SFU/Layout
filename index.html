@@ -273,6 +273,21 @@
             <div class="col"><content>3 col-50%<br>3 col</content></div>
         </div>
         <hr><br>
+        
+        <h4>2 col nested 2 col (simulate 3 col 25 25 50) Stack different</h4>
+        <div class="panel has-2-col">
+            <div class="col">
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                </div>
+            </div>
+            <div class="col">
+                <content>2 col<br>2 col</content>
+            </div>
+        </div>
+        <hr><br>
+        
         <h4>3 col 50 25 25</h4>
         <div class="panel has-3-col w2-1-1">
             <div class="col"><content>1 col-50%<br>1 col</content></div>
@@ -281,6 +296,20 @@
         </div>
         <hr><br>
         
+        <h4>2 col nested 2 col (simulate 3 col 25 25 50) Stack different</h4>
+        <div class="panel has-2-col">
+            <div class="col">
+                <content>2 col<br>2 col</content>
+                
+            </div>
+            <div class="col">
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                </div>
+            </div>
+        </div>
+        <hr><br>
         
         <h4>2 col : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
             / <a class="example_btn" onclick="$(this).parent().next().toggleClass('grey');">Switch</a></h4> 
@@ -528,6 +557,7 @@
             </div>
         </div>
         <hr><br>
+        
         <h4>1 col nested 4 col</h4>
         <div class="panel has-1-col">
             <div class="col">
