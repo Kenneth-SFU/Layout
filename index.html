@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -17,84 +17,86 @@
     <div id="container">
     <div class="size-control" style="width:1420px;">
         <div id="marker">
-            <div id="break1">1090px &nbsp;</div>
-            <div id="break2">810px &nbsp;</div>
-            <div id="break3">530px &nbsp;</div>
+            <div id="break1">1062px &nbsp;</div>
+            <div id="break2">789px &nbsp;</div>
+            <div id="break3">516px &nbsp;</div>
+            <div id="break-mobile">mobile &nbsp;</div>
+            <div id="break-tablet">tablet &nbsp;</div>
         </div>        
         <h4>2 col</h4>
-        <div class="panel has-2-col stack-last-first">
+        <div class="panel hints has-2-col stack-last-first">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col 33,66%</h4>
-        <div class="panel has-2-col w1-2">
+        <div class="panel hints has-2-col w1-2">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col 66,33%</h4>
-        <div class="panel has-2-col w2-1">
+        <div class="panel hints has-2-col w2-1">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col 25,75%</h4>
-        <div class="panel has-2-col w1-3">
+        <div class="panel hints has-2-col w1-3">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col 75,25%</h4>
-        <div class="panel has-2-col w3-1">
+        <div class="panel hints has-2-col w3-1">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>3 col - stack: default</h4>
-        <div class="panel has-3-col">
+        <div class="panel hints has-3-col">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
             <div class="col"><content>3 col<br>3 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         <h4>3 col - stack: fullwidth</h4>
-        <div class="panel has-3-col stackfull">
+        <div class="panel hints has-3-col stackfull">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
             <div class="col"><content>3 col<br>3 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         <h4>3 col - stack: stack-first</h4>
-        <div class="panel has-3-col stack-first">
+        <div class="panel hints has-3-col stack-first">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
             <div class="col"><content>3 col<br>3 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         <h4>4 col</h4>
-        <div class="panel has-4-col">
+        <div class="panel hints has-4-col">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
             <div class="col"><content>3 col<br>3 col</content></div>
             <div class="col"><content>4 col<br>4 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         <h4>3 col 25 25 50</h4>
-        <div class="panel has-3-col w1-1-2">
+        <div class="panel hints has-3-col w1-1-2">
             <div class="col"><content>1 col-25%<br>1 col</content></div>
             <div class="col"><content>2 col-25%<br>2 col</content></div>
             <div class="col"><content>3 col-50%<br>3 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col nested 2 col (simulate 3 col 25 25 50) Stack different</h4>
-        <div class="panel has-2-col">
+        <div class="panel hints has-2-col">
             <div class="col">
                 <div class="panel has-2-col">
                     <div class="col"><content>1 col<br>1 col</content></div>
@@ -105,18 +107,18 @@
                 <content>2 col<br>2 col</content>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>3 col 50 25 25</h4>
-        <div class="panel has-3-col w2-1-1">
+        <div class="panel hints has-3-col w2-1-1">
             <div class="col"><content>1 col-50%<br>1 col</content></div>
             <div class="col"><content>2 col-25%<br>2 col</content></div>
             <div class="col"><content>3 col-25%<br>3 col</content></div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col nested 2 col (simulate 3 col 25 25 50) Stack different</h4>
-        <div class="panel has-2-col">
+        <div class="panel hints has-2-col">
             <div class="col">
                 <content>2 col<br>2 col</content>
                 
@@ -128,10 +130,10 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col 25%,75%</h4>
-        <div class="panel has-2-col w1-3">
+        <div class="panel hints has-2-col w1-3">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col">
                 <div class="panel has-3-col">
@@ -141,10 +143,10 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col 33%,66%</h4>
-        <div class="panel has-2-col w1-2">
+        <div class="panel hints has-2-col w1-2">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col">
                 <div class="panel has-3-col">
@@ -154,13 +156,14 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
-        <h4>2 col : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
-            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('grey');">Switch</a></h4> 
-        <div class="panel has-2-col">
+        <h4>2 col : 
+            <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> / 
+            <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints'); $(this).parent().next().toggleClass('grey');">Switch</a></h4> 
+        <div class="panel hints has-2-col">
             <div class="col">
-                <div class="text-component pad-top">
+                <div class="text-component lg-pad-top md-pad-top">
                     <h2>Experience Campus Life</h2>
                     <p>Fall is a great time to visit our Burnaby or Surrey campuses for a tour lead by current SFU students. Hear their experiences firsthand and discover what SFU has to offer.</p>
                 </div>
@@ -176,11 +179,12 @@
             </div>
             <div class="col"><img alt="Burnaby campus" title="Burnaby campus" src="images/photo_16x9_2.jpg"></div>
         </div>
-        <hr><br>
+        <hr>
         
-        <h4>3 col - stack: default: Simulate "block grey" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
-            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('grey');">Switch</a></h4>
-        <div class="panel has-3-col">
+        <h4>3 col - stack: default: Simulate "block grey" : 
+            <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> / 
+            <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints'); $(this).parent().next().toggleClass('grey');">Switch</a></h4>
+        <div class="panel hints has-3-col">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -220,12 +224,14 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
 
         
-        <h4>3 col - stack: default: Simulate "col-1-grey col-2-grey col-3-grey block" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> / <a class="example_btn" onclick="$(this).parent().next().toggleClass('col-grey');">Switch</a></h4>
-        <div class="panel has-3-col padding-in-column">
+        <h4>3 col - stack: default: Simulate "col-1-grey col-2-grey col-3-grey block" : 
+            <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> / 
+            <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints'); $(this).parent().next().toggleClass('col-grey');">Switch</a></h4>
+        <div class="panel hints has-3-col padding-in-column">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -265,12 +271,12 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         
         <h4>3 col - stack: default: Simulate "No padding No block" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
-            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('no-color');">Switch</a></h4>
-        <div class="panel has-3-col no-padding">
+            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints');">Switch</a></h4>
+        <div class="panel hints has-3-col no-pad">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -290,7 +296,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel has-3-col no-padding no-color" style="display: none;">
+        <div class="panel has-3-col no-pad" style="display: none;">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -310,13 +316,13 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
 
         
         <h4>4 col - stack: default: Simulate "No padding No block" : <a class="example_btn" onclick="$(this).parent().next().next().slideToggle();">Example</a> 
-            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('no-color');">Switch</a></h4>
-        <div class="panel has-4-col no-padding">
+            / <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints');">Switch</a></h4>
+        <div class="panel hints has-4-col no-pad">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -342,7 +348,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel has-4-col no-padding no-color" style="display: none;">
+        <div class="panel has-4-col no-pad" style="display: none;">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -368,11 +374,11 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         
-        <h4>2 col - stack: default: Simulate "No padding No block"</h4>
-        <div class="panel has-2-col no-padding">
+        <h4>2 col - stack: default: Simulate "No padding No block" <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints');">Switch</a></h4>
+        <div class="panel hints has-2-col no-pad">
             <div class="col">
                 <img alt="Burnaby campus" title="Burnaby campus" src="images/photo_16x9_2.jpg">
             </div>
@@ -380,10 +386,10 @@
                 <img alt="Burnaby campus" title="Burnaby campus" src="images/photo_16x9_2.jpg">
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>2 col nested 2 col</h4>
-        <div class="panel has-2-col">
+        <div class="panel hints has-2-col">
             <div class="col">
                 <div class="panel has-2-col">
                     <div class="col"><content>1 col<br>1 col</content></div>
@@ -401,10 +407,10 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
         <h4>1 col nested 4 col</h4>
-        <div class="panel has-1-col">
+        <div class="panel hints has-1-col">
             <div class="col">
                 <div class="panel has-4-col">
                     <div class="col"><content>1 col<br>1 col</content></div>
@@ -414,9 +420,9 @@
                 </div>
             </div>            
         </div>
-        <hr><br>
+        <hr>
         <h4>1 col nested 3 col</h4>
-        <div class="panel has-1-col">
+        <div class="panel hints has-1-col">
             <div class="col">
                 <div class="panel has-3-col">
                     <div class="col"><content>1 col<br>1 col</content></div>
@@ -425,9 +431,9 @@
                 </div>
             </div>            
         </div>
-        <hr><br>
+        <hr>
         <h4>2 col - Right nested 3 col</h4>
-        <div class="panel has-2-col w1-2">
+        <div class="panel hints has-2-col w1-2">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col">                
                 <div class="panel has-3-col">
@@ -438,10 +444,10 @@
                 </div>
             </div>            
         </div>
-        <hr><br>
+        <hr>
         <hide>
         <h4>2 col 25,75 - Right nested 3 col</h4>
-        <div class="panel has-2-col w1-3">
+        <div class="panel hints has-2-col w1-3">
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col">                
                 <div class="panel has-3-col">
@@ -452,11 +458,11 @@
                 </div>
             </div>            
         </div>
-        <hr><br>
+        <hr>
         </hide>
         
         <h4>3 col - stack: default: Simulate "col-1-grey col-2-grey col-3-grey block"</h4>
-        <div class="panel has-2-col padding-in-column w1-2">
+        <div class="panel hints has-2-col padding-in-column w1-2">
             <div class="col">
                 <div class="text-component ">
                     <h2>Undergraduate Studies</h2>
@@ -470,7 +476,7 @@
                 </div>
             </div>
         </div>
-        <hr><br>
+        <hr>
         
     </div>
 </div>
