@@ -1,12 +1,12 @@
 :root {
-      --padding_v: 50px;
-      --padding_h: 50px;
+      --padding_v: 40px;
+      --padding_h: 40px;
       --gap_h: 30px;
       --gap_v: 30px;
-      --marginbottom: 50px;
+      --marginbottom: 40px;
       --col_width: 243px; /* 250px*/
     }
-    @media screen and (max-width: 1199px)   {  :root { --padding_v: 50px; --padding_h: 30px; --gap_h: 30px; --gap_v: 30px;}  } /* Tablet */
+    @media screen and (max-width: 1199px)   {  :root { --padding_v: 30px; --padding_h: 30px; --gap_h: 30px; --gap_v: 30px;}  } /* Tablet */
     @media screen and (max-width: 575px)    {  :root { --padding_v: 30px; --padding_h: 20px; --gap_h: 20px; --gap_v: 20px;}  } /* Mobile */
 
     /* Overrides settings in :root with class */
@@ -107,11 +107,12 @@
     .w2-1-1.has-3-col > .col { width:calc(25% - (var(--gap_h) * 2 / 3) );} .w2-1-1.has-3-col > .col:nth-child(1) { width:calc(50% - (var(--gap_h) * 2 / 3) ); } 
     
     /* Padding switch */
-    .panel.padding-in-column { padding: 0;  max-width: 100%; min-width: 352px;}
+    .panel.padding-in-column { padding: 0;  max-width: 100%; min-width: 320px;}
     .panel.padding-in-column > .col{ padding:var(--padding_v) var(--padding_h); }
     
     .padding-in-column.has-2-col > .col{ width: calc(50% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); }
     .padding-in-column.has-3-col > .col{ width: calc(33.3% - (var(--gap_h) * 2 / 3) - var(--padding_h) - var(--padding_h)); }
+    .padding-in-column.has-4-col > .col{ width: calc(25% - (var(--gap_h) * 3 / 4) - var(--padding_h) - var(--padding_h)); }
     
     .padding-in-column.w1-2.has-2-col > .col { width: calc(33.3% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); }    
     .padding-in-column.w1-2.has-2-col > .col:last-child { width: calc(66.6% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); } 
@@ -130,12 +131,12 @@
 
 
     
-    /* col 243px & 243+padding(343)px marker */
+    /* col 243px & 243+padding(263)px marker */
     .col:before {  position:absolute; left: 0; top: 0; width: var(--col_width); height:13px; 
         border-right: 1px solid #aaa; border-top: 1px solid #aaa; 
         text-align: right; font-size: 10px; color: #888; }
     
-    .padding-in-column > .col:before { width:calc( var(--col_width) + var(--padding_h) + var(--padding_h) );}
+    .padding-in-column > .col:before { width:calc( var(--col_width) + ( ( var(--padding_h) + var(--padding_h) ) / 4 ) );}
     
 
     
@@ -145,7 +146,7 @@
     .hints.panel .panel:before { content:"Child"; color: #bccacc;}
     .hints.panel > .col:before {content:"Mother's Col: 243px >";}
     .hints.panel .panel > .col:before {content:"Child's Col: 243px >";}
-    .hints.padding-in-column.panel > .col:before {content:"Mother's Col: 343px >";}
+    .hints.padding-in-column.panel > .col:before {content:"Mother's Col: 263px >";}
     .hints .text-component { border:1px solid orange; }
     .hints .text-component:after{ content:"text component"; color:orange; width:calc(100% - 5px); text-align: right; margin-top:-20px; right: 5px;  position: absolute;}
 
@@ -211,6 +212,13 @@
         .w3-1.has-2-col > .col, .w3-1.has-2-col > .col:last-child { width:100%; margin-right: 0; } .w3-1.has-2-col > .col:last-child { margin-top: var(--gap_v);}
     }
     
+    /* Try Nesting Media & Container query */
+    @media screen and (max-width: 1024px) { /* For include new iPad seem need to be 1180px or If include iPad Pro 11" will be 1194 / 1199px it's close to 1200px which will be more mark sense*/
+        @container panel (max-width: 789px) { /* Just make this size within 1024 so i can see it's tigger with within Tablet range */ 
+            .has-4-col .col { background: #badcc1 !important; }
+        }
+    }    
+    
     @container panel (max-width: 788px) { /* 243 + 30 + 243 + 30 + 243  = 789 */                        
         .w1-2.has-2-col > .col, .w1-2.has-2-col > .col:last-child { width:100%;  margin-right: 0;} 
         .w1-2.has-2-col > .col:last-child { margin-top: var(--gap_v);}
@@ -244,7 +252,14 @@
     
     /* Padding-in-column (switch in) Stacking */
 
-    @container panel (max-width: 1089px) { /* [ 243+100 ] 30 [ 243+100 ] 30 [ 243+100 ]  = 1089px */
+    /* [ 263 ] 30 [ 263 ] 30 [ 263 ] 30 [ 263 ] = 1142px */ 
+    @container panel (max-width: 1142px) { 
+        .padding-in-column.has-4-col .col { width:calc(50% - (var(--gap_h) / 2) - var(--padding_h) - var(--padding_h) ); } .padding-in-column.has-4-col .col:nth-child(2) {margin-right: 0; } 
+        .padding-in-column.has-4-col .col:nth-child(1n+3) {margin-top: var(--gap_v); }
+    }
+
+    /* [ 263 ] 30 [ 263 ] 30 [ 263 ]  = 849px */    
+    @container panel (max-width: 848px) { 
         .padding-in-column.has-3-col > .col { width:calc(50% - (var(--gap_h) / 2) - var(--padding_h) - var(--padding_h) ); } 
         .padding-in-column.has-3-col:not(.w2-1-1) > .col:nth-child(even) {margin-right: 0;} 
         .padding-in-column.has-3-col:not(.w2-1-1) > .col:last-child {margin-top: var(--gap_v); }
@@ -261,7 +276,9 @@
         .padding-in-column.has-3-col.stack-first > .col + .col { width:calc( 50% - (var(--gap_h) / 2) - var(--padding_h) - var(--padding_h)  ); margin-top: var(--gap_v); }
         .padding-in-column.has-3-col.stack-first > .col:nth-child(2) { margin-right: var(--gap_h);}
     }
-    @container panel (max-width: 716px) { /* [ 243+100 ] 30 [ 243+100 ]   = 716px */
+    
+    /* [ 263 ] 30 [ 263 ]   = 556px */    
+    @container panel (max-width: 555px) { 
         .padding-in-column.has-3-col > .col { width: 100%; margin-right:0;}   .padding-in-column.has-3-col > .col + .col { margin-top: var(--gap_v);}
         .padding-in-column.has-2-col > .col { width: 100%; margin-right:0;}   .padding-in-column.has-2-col > .col + .col { margin-top: var(--gap_v);}
         .padding-in-column.has-4-col > .col { width: 100%; margin-right:0;}   .padding-in-column.has-4-col > .col + .col { margin-top: var(--gap_v);}
@@ -269,6 +286,7 @@
         .padding-in-column.has-3-col.stack-first > .col, .padding-in-column.has-3-col.stack-first > .col:nth-child(2), 
         .padding-in-column.has-3-col.stack-first > .col + .col { width:100%; margin-right: 0; } 
     }
+    
     
 
     /* Screen break point adjust style */
@@ -287,10 +305,12 @@
     #break1 { width: calc(1062px - 1px);    background: hsl(0deg 0% 95%);}
     #break2 { width: calc(789px - 1px);     background: hsl(0deg 0% 90%);}
     #break3 { width: calc(516px - 1px);     background: hsl(0deg 0% 95%);}
-    #break-mobile, #break-tablet { position: absolute; top: 35px; left: 0; 
+    #break-mobile, #break-tablet, #break-mds, #break-md { position: absolute; top: 35px; left: 0; 
         margin: 0 0 0 calc( -1 * var(--padding_h) );  height: 15px; border-right: 1px solid #666; text-align: right; }
     #break-mobile { width: calc(575px - 1px); }
     #break-tablet { width: calc(1199px - 1px); }
+    #break-mds { width: calc(768px - 1px); }
+    #break-md { width: calc(992px - 1px); }
     
     /* Dummy content */
     content { padding: 30px 0; display: block;}
