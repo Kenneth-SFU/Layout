@@ -57,10 +57,11 @@
         font-family: countachweb-bold; text-transform: uppercase; font-size: 65px; line-height: 60px; 
         background:#ffffff; color:black;  
     }
-    .img_text h2 span { position:relative; margin-left: 0px; } /* Fix , issue */
+    .img_text h2 span { position:relative; } /* Fix , issue */
     /* Fix Window difference */
-    body.window .img_text { padding-top: 2px; padding-bottom: 8px; }
-    body.window .img_text h2 { padding: 0px 11px 2px 0px; }
+    body.window .img_text { padding-top: 7px; padding-bottom: 4px; }
+    body.window .img_text h2 { padding: 0px 11px 0px 0px; }
+    body.window .img_text h2 span { top: -4px; }
 
     /* Countach with Bar bg - End */
     
