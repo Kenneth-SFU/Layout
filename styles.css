@@ -16,6 +16,11 @@
     /*
     .no-pad-h   { --padding_h: 0px; }   .no-pad-v   { --padding_v: 0px; }
     */
+
+    @font-face {
+      font-family: countachweb-bold;
+      src: url("images/countachweb-bold.ttf");
+    }
     
     /* general style */
     html {  margin: 0 0px 0 0; padding-right: 4px } body { margin: 0; }
@@ -41,6 +46,25 @@
     .text-component ul li:last-child { margin-bottom: 0; }
     .text-component ul li::before {  font-family: "Verdana", sans-serif;  content: "■"; 
         color: #a6192e;  float: left;  width: 30px; margin-left: -30px; }
+
+    /* Countach with Bar bg */
+    .img_text { 
+        text-align :left; padding-top: 11px; 
+        overflow-x: hidden; overflow-y: clip;
+    }
+    .img_text h2{ 
+        position: relative; left: -2px; padding: 9px 11px 0px 0px;  display: inline;     white-space: pre-wrap;
+        font-family: countachweb-bold; text-transform: uppercase; font-size: 65px; line-height: 60px; 
+        background:#ffffff; color:black;  
+    }
+    .img_text h2 span { position:relative; } /* Fix , issue */
+    /* Fix Window difference */
+    body.window .img_text { padding-top: 7px; padding-bottom: 4px; }
+    body.window .img_text h2 { padding: 0px 11px 0px 0px; }
+    body.window .img_text h2 span { top: -4px; }
+
+    /* Countach with Bar bg - End */
+    
 
     a.readmore { font-family: "barlow-medium",sans-serif; color: #cc0633;    font-size: 13px;    text-decoration: none;    text-transform: uppercase; }
     a.readmore:after { font-family: "barlow-regular",sans-serif;    content: " \2192"; }

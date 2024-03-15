@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="styles.css">
 <style>
     
@@ -14,6 +15,10 @@
     
 </head>
 <body>
+    <script>
+        if(navigator.platform.match('Mac') !== null) { document.body.classList.add('mac');}
+        if(navigator.platform.match('Win') !== null) { document.body.classList.add('window');}
+    </script>
     <div id="container">
     <div class="size-control" style="width:1420px;">
         <div id="marker">
@@ -512,6 +517,24 @@
                 </div>
             </div>
         </div>
+        <hr>
+        
+        <h4>Black Countach in Red Block Simulate: "col-1-darkred col-2-darkred" : 
+            <a class="example_btn" onclick="$(this).parent().next().toggleClass('hints');
+                                            $(this).parent().next().toggleClass('col-darkred');">Switch</a></h4>
+        <div class="panel hints has-2-col padding-in-column">
+            <div class="col">
+                <div class="img_text">
+                    <h2><span>HEADLINE BANNER IMAGE</span></h2>                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="img_text">
+                    <h2><span>HEADLINE BANNER IMAGE HEADLINE</span></h2>                    
+                </div>
+            </div>
+        </div>
+        
         <hr>
         
     </div>
