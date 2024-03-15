@@ -47,7 +47,9 @@
     .text-component ul li::before {  font-family: "Verdana", sans-serif;  content: "■"; 
         color: #a6192e;  float: left;  width: 30px; margin-left: -30px; }
 
-    .img_text { text-align :left; padding-top: 11px; 
+    /* Countach with Bar bg */
+    .img_text { 
+        text-align :left; padding-top: 11px; 
         overflow-x: hidden; overflow-y: clip;
     }
     .img_text h2{ 
@@ -56,6 +58,12 @@
         background:#ffffff; color:black;  
     }
     .img_text h2 span { position:relative; margin-left: 0px; } /* Fix , issue */
+    /* Fix Window difference */
+    body.window .img_text { padding-top: 2px; padding-bottom: 8px; }
+    body.window .img_text h2 { padding: 0px 11px 2px 0px; }
+
+    /* Countach with Bar bg - End */
+    
 
     a.readmore { font-family: "barlow-medium",sans-serif; color: #cc0633;    font-size: 13px;    text-decoration: none;    text-transform: uppercase; }
     a.readmore:after { font-family: "barlow-regular",sans-serif;    content: " \2192"; }
