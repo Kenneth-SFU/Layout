@@ -48,6 +48,7 @@
         color: #a6192e;  float: left;  width: 30px; margin-left: -30px; }
 
     /* Countach with Bar bg */
+    .img_text.moveleft { margin-left: calc( -1 * var(--padding_h) ); }
     .img_text { 
         text-align :left; padding-top: 11px; 
         overflow-x: hidden; overflow-y: clip;
