@@ -1,3 +1,5 @@
+@import url("fonts.css");
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
       --padding_v: 40px;
       --padding_h: 40px;
@@ -17,10 +19,6 @@
     .no-pad-h   { --padding_h: 0px; }   .no-pad-v   { --padding_v: 0px; }
     */
 
-    @font-face {
-      font-family: countachweb-bold;
-      src: url("images/countachweb-bold.ttf");
-    }
     
     /* general style */
     html {  margin: 0 0px 0 0; padding-right: 4px } body { margin: 0; }
@@ -31,6 +29,7 @@
     h3{ font-family: 'Barlow Condensed', sans-serif; font-size: 28px; line-height: 33.6px; font-weight: 600;
         letter-spacing: normal; margin: 0 0 30px 0;}
     p { font-family: 'Barlow', sans-serif;   font-size: 18px; line-height: 26px; margin: 0 0 30px 0; padding: 0; }
+    p.intro { font-size: 24px; line-height: 36px; }
     .text-component { text-align :left; display: block; position: relative; } 
     .text-component.align-center {  text-align : center; }
     .text-component.pad-top { padding-top: var(--padding_v);}
