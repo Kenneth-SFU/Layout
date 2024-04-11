@@ -38,10 +38,10 @@
     img { width: 100%; max-width: 100%;  display: inherit; }
 
     .text-component ul{ 
-        display: grid;  grid-column-gap: 7rem;  grid-template-columns: 1fr; padding: 0; margin: 0 0 30px 0;
+        display: grid;  grid-column-gap: 30px;  grid-template-columns: 1fr; padding: 0; margin: 0 0 30px 0;
         font-size: 18px;  line-height: 26px;    
     }
-    .text-component ul li { list-style: none;  line-height: 26px;  margin-bottom: 1.5rem; padding: 0; padding-left: 29px; }
+    .text-component ul li { list-style: none;  line-height: 26px;  margin-bottom: 15px; padding: 0; padding-left: 29px; }
     .text-component ul li:last-child { margin-bottom: 0; }
     .text-component ul li::before {  font-family: "Verdana", sans-serif;  content: "■"; 
         color: #a6192e;  float: left;  width: 30px; margin-left: -30px; }
@@ -50,15 +50,15 @@
     .panel .img_text { margin-left: calc( -1 * var(--padding_h) ); }
     .img_text { 
         text-align :left; padding-top: 11px; 
-        overflow-x: hidden; overflow-y: clip;
+        /* overflow-x: hidden; overflow-y: clip; */
     }
     .img_text h2{ 
         position: relative; left: -2px; padding: 9px 11px 0px 0px;  display: inline;     white-space: pre-wrap;
         font-family: countachweb-bold; text-transform: uppercase; font-size: 65px; line-height: 60px; font-weight: 500;
         background:#ffffff; color:black;  
         /* responsive for include text "undergraduate" */
-        font-size: min(max(2.68rem, 4.7vw), 65px);
-        line-height: min(max(2.68rem, 4.7vw), 65px);        
+        font-size: min(max(42px, 4.7vw), 65px);
+        line-height: min(max(42px, 4.7vw), 65px);        
     }
     .img_text h2 span { position:relative; } /* Fix , issue */
     /* Fix Window difference */
