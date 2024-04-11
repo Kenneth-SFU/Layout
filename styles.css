@@ -56,6 +56,9 @@
         position: relative; left: -2px; padding: 9px 11px 0px 0px;  display: inline;     white-space: pre-wrap;
         font-family: countachweb-bold; text-transform: uppercase; font-size: 65px; line-height: 60px; font-weight: 500;
         background:#ffffff; color:black;  
+        /* responsive for include text "undergraduate" */
+        font-size: min(max(2.68rem, 4.7vw), 65px);
+        line-height: min(max(2.68rem, 4.7vw), 65px);        
     }
     .img_text h2 span { position:relative; } /* Fix , issue */
     /* Fix Window difference */
