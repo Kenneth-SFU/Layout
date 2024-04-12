@@ -47,10 +47,14 @@
         color: #a6192e;  float: left;  width: 30px; margin-left: -30px; }
 
     /* Countach with Bar bg */
-    .panel .img_text { margin-left: calc( -1 * var(--padding_h) ); }
+    .panel .img_text { margin-left: calc( -1 * var(--padding_h) ); margin-right: calc( -1 * var(--padding_h) );}
     .img_text { 
         text-align :left; padding-top: 11px; 
-        /* overflow-x: hidden; overflow-y: clip; */
+        /* overflow-x: hidden;  */ overflow-y: clip;
+        /* clip-path: polygon(0 0, calc(100% + 50px) 0%, calc(100%+50px) 100%, 0 100%);*/
+        /* clip-path: polygon(0 0,100% 0,100% calc(100% - 100px),calc(100% - 100px) 100%,0 100%); */
+        /* clip-path: polygon(0 0,calc(100% + 50px) 0,calc(100% + 50px) 100%,0 100%);     */
+        clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
     }
     .img_text h2{ 
         position: relative; left: -2px; padding: 9px 11px 0px 0px;  display: inline;     white-space: pre-wrap;
@@ -58,7 +62,7 @@
         background:#ffffff; color:black;  
         /* responsive for include text "undergraduate" */
         font-size: min(max(42px, 4.7vw), 65px);
-        line-height: min(max(42px, 4.7vw), 65px);        
+        line-height: min(max(40px, 4.5vw), 60px);  
     }
     .img_text h2 span { position:relative; } /* Fix , issue */
     /* Fix Window difference */
