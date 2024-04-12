@@ -83,6 +83,7 @@
     /* Fix Window difference */
     body.window .img_text { padding-top: 7px; padding-bottom: 4px; }
     body.window .img_text h2 { padding: 0px 9px 0px 0px;    padding-right: min(max(6px, 0.7vw), 9px); }
+    body.window .img_text.text-right h2{ padding-right: 0; padding-left: min(max(6px, 0.7vw), 9px); }
     body.window .img_text h2 span { top: -4px; }
 
     /* Countach with Bar bg - End */
