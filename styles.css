@@ -61,18 +61,19 @@
 
     .img_text h2{ 
         /* position: relative; left: -2px; */ 
-        padding: 9px 10px 0px 0px;  display: inline;     white-space: pre-wrap;
+        padding: 9px 9px 0px 0px;  display: inline;     /*white-space: pre-wrap;*/
         padding-top: min(max(6px, 0.7vw), 9px);
+        padding-right: min(max(6px, 0.7vw), 9px);
         font-family: countachweb-bold; text-transform: uppercase; font-size: 65px; line-height: 60px; font-weight: 500;
         color:black;
         /* responsive for include text "undergraduate" */
         font-size: min(max(42px, 4.7vw), 65px);
         line-height: min(max(40px, 4.5vw), 60px);  
-        
+        -webkit-box-decoration-break: clone; -o-box-decoration-break: clone; box-decoration-break: clone;
         /* background: #fff; */
     }
-    .img_text.text-right h2{ white-space:inherit; padding-right: 0;  padding-left: 10px; 
-    -webkit-box-decoration-break: clone; -o-box-decoration-break: clone; box-decoration-break: clone;}
+    .img_text.text-right h2{ white-space:inherit; padding-right: 0;  padding-left: min(max(6px, 0.7vw), 9px); 
+    }
 
     .img_text.text-flush h2 { background:#ffffff;  }
 
