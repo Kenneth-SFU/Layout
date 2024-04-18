@@ -37,6 +37,12 @@
     .text-component > :last-child { margin-bottom: 0; } 
     img { width: 100%; max-width: 100%;  display: inherit; }
 
+    /*trim to remain 3 letter */
+    h2.trim { width: 3.7ch; word-break: break-all; letter-spacing: 1px; overflow: hidden; height: 1em; }
+    @-moz-document url-prefix() { /* firefox only adjust */
+            h2.trim { width: 3.67ch; }
+    }
+
     .text-component ul{ 
         display: grid;  grid-column-gap: 30px;  grid-template-columns: 1fr; padding: 0; margin: 0 0 30px 0;
         font-size: 18px;  line-height: 26px;    
