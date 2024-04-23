@@ -85,6 +85,16 @@
   src: url('webfonts/RadioCanadaCondensed-Regular.woff2') format('woff2'); 
 }
 
+/* ---- */
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada';
+  font-style: normal;
+  font-weight: 500;
+  src: url('webfonts/RadioCanadaCondensed-Medium.woff2') format('woff2'); 
+}
+
 @font-face {
   font-display: swap; 
   font-family: 'Radio Canada';
@@ -93,6 +103,25 @@
   src: url('webfonts/RadioCanada-Regular.woff2') format('woff2'); 
 }
 
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada';
+  font-style: normal;
+  font-weight: 300;
+  src: url('webfonts/RadioCanada-Light.woff2') format('woff2'); 
+}
+
+/* use 400 light font for 500 */
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada 400';
+  font-style: normal;
+  font-weight: 500;
+  src: url('webfonts/RadioCanada-Regular.woff2') format('woff2'); 
+}
+
+/* use 300 light font for 400 */
 @font-face {
   font-display: swap; 
   font-family: 'Radio Canada 300';
