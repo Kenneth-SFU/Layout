@@ -51,7 +51,7 @@
     font-display: swap
 }
 
-/* Radio Canada */
+/* Radio Canada Condensed */
 
 @font-face {
   font-display: swap; 
@@ -85,14 +85,49 @@
   src: url('webfonts/RadioCanadaCondensed-Regular.woff2') format('woff2'); 
 }
 
-/* ---- */
+/* Radio Canada Condensed - Font weight shift test */
+
+/* use 500 Medium font for 600 SemiBold */
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada Condensed 500';
+  font-style: normal;
+  font-weight: 600;
+  src: url('webfonts/RadioCanadaCondensed-Medium.woff2') format('woff2'); 
+}
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada Condensed 400';
+  font-style: normal;
+  font-weight: 600;
+  src: url('webfonts/RadioCanadaCondensed-Regular.woff2') format('woff2'); 
+}
+
+
+/* -- Radio Canada normal -- */
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada';
+  font-style: normal;
+  font-weight: 700;
+  src: url('webfonts/RadioCanada-Bold.woff2') format('woff2'); 
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada';
+  font-style: normal;
+  font-weight: 600;
+  src: url('webfonts/RadioCanada-SemiBold.woff2') format('woff2'); 
+}
 
 @font-face {
   font-display: swap; 
   font-family: 'Radio Canada';
   font-style: normal;
   font-weight: 500;
-  src: url('webfonts/RadioCanadaCondensed-Medium.woff2') format('woff2'); 
+  src: url('webfonts/RadioCanada-Medium.woff2') format('woff2'); 
 }
 
 @font-face {
@@ -111,8 +146,31 @@
   src: url('webfonts/RadioCanada-Light.woff2') format('woff2'); 
 }
 
-/* use 400 light font for 500 */
 
+
+/* Radio Canada - Font weight shift */
+
+/* use 600 SemiBold font for 700 Bold */
+/*
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada 600';
+  font-style: normal;
+  font-weight: 700;
+  src: url('webfonts/RadioCanada-SemiBold.woff2') format('woff2'); 
+}
+*/
+
+/* use 500 Medium font for 600 SemiBold */
+@font-face {
+  font-display: swap; 
+  font-family: 'Radio Canada 500';
+  font-style: normal;
+  font-weight: 600;
+  src: url('webfonts/RadioCanada-Medium.woff2') format('woff2'); 
+}
+
+/* use 400 Regular font for 500 Medium */
 @font-face {
   font-display: swap; 
   font-family: 'Radio Canada 400';
@@ -121,7 +179,7 @@
   src: url('webfonts/RadioCanada-Regular.woff2') format('woff2'); 
 }
 
-/* use 300 light font for 400 */
+/* use 300 light font for 400 Regular */
 @font-face {
   font-display: swap; 
   font-family: 'Radio Canada 300';
