@@ -42,13 +42,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function updateattribute(field1,field2,layout){
     
-    if (document.getElementById(field1).value == "" || document.getElementById(field1).value == 0 ){
+    if (document.getElementById(field1).value == "" || document.getElementById(field1).value <= 0 ){
         document.getElementById(layout).removeAttribute('stackpt1');
     }else{
         document.getElementById(layout).setAttribute('stackpt1', document.getElementById(field1).value);
     }
     
-    if (document.getElementById(field2).value == "" || document.getElementById(field2).value == 0){
+    if (document.getElementById(field2).value == "" || document.getElementById(field2).value <= 0){
         document.getElementById(layout).removeAttribute('stackpt2');
     }else{
         document.getElementById(layout).setAttribute('stackpt2', document.getElementById(field2).value);
