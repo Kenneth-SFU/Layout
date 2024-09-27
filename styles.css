@@ -381,6 +381,12 @@
     .has-3-col.stack-first.stack-pt2 > .col:nth-child(2), 
     .has-3-col.stack-first.stack-pt2 > .col + .col { width:100%; margin-right: 0; } 
 
+    .panel.applied{ animation-duration: 1s;animation-name: applied;}
+    @keyframes applied {
+      25% { background: #ffeb3b5c; }
+      100% { background: #ffebee; }
+    }
+
 
     
 

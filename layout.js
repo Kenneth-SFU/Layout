@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 function updateattribute(field1,field2,layout){
-    
+
     if (document.getElementById(field1).value == "" || document.getElementById(field1).value <= 0 ){
         document.getElementById(layout).removeAttribute('stackpt1');
     }else{
@@ -53,5 +53,9 @@ function updateattribute(field1,field2,layout){
     }else{
         document.getElementById(layout).setAttribute('stackpt2', document.getElementById(field2).value);
     }
+    document.getElementById(layout).classList.add('applied');
+    setTimeout(() => {
+      document.getElementById(layout).classList.remove('applied');
+    }, 1100);
     
 }
