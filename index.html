@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+
 
 <link rel="stylesheet" href="styles.css">
 <style>
@@ -18,7 +20,7 @@
     <script>
         if(navigator.platform.match('Mac') !== null) { document.body.classList.add('mac');}
         if(navigator.platform.match('Win') !== null) { document.body.classList.add('window');}
-    </script>
+    </script>    
     <div id="container">
     <div class="size-control" style="width:1420px;">
         <div id="marker">
@@ -665,18 +667,54 @@
         <hr>
         <br>
         
-        <h4>4 col test custom stack early (Default stack pint at size: 515px, 1061px) </h4>
-        Stack Early point 1 <input type="number" id="stackpt1" name="stackpt1"> Stack Early point 2 <input type="number" id="stackpt2" name="stackpt2"> <br><br>
-        <div class="panel hints has-4-col show-width " >
+        <h4>4 col test custom stack early (default value) </h4>
+        Stack point 1 (1061px) <input type="number" id="stackpt1_1" name="stackpt1"> &nbsp;
+        Stack point 2 (515px) <input type="number" id="stackpt1_2" name="stackpt2">
+        <button onclick="updateattribute('stackpt1_1','stackpt1_2','testlayout1');">Update</button> <br><br>
+        <div id="testlayout1" class="panel hints has-4-col show-width "> <!--  stackpt1="1200" stackpt2="800" -->
             <div class="col"><content>1 col<br>1 col</content></div>
             <div class="col"><content>2 col<br>2 col</content></div>
             <div class="col"><content>3 col<br>3 col</content></div>
             <div class="col"><content>4 col<br>4 col</content></div>
         </div>
         
+        <br>
+        
+        <h4>3 col test custom stack early (default value) </h4>
+        Stack point 1 (788px) <input type="number" id="stackpt2_1" name="stackpt1"> &nbsp;
+        Stack point 2 (515px) <input type="number" id="stackpt2_2" name="stackpt2">
+        <button onclick="updateattribute('stackpt2_1','stackpt2_2','testlayout2');">Update</button> <br><br>
+        <div id="testlayout2" class="panel hints has-3-col show-width ">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+            <div class="col"><content>3 col<br>3 col</content></div>
+        </div>
+        
+        <h4>3 col (stack-first) test custom stack early (default value) </h4>
+        Stack point 1 (788px) <input type="number" id="stackpt4_1" name="stackpt1"> &nbsp;
+        Stack point 2 (515px) <input type="number" id="stackpt4_2" name="stackpt2">
+        <button onclick="updateattribute('stackpt4_1','stackpt4_2','testlayout4');">Update</button> <br><br>
+        <div id="testlayout4" class="panel hints has-3-col stack-first show-width">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+            <div class="col"><content>3 col<br>3 col</content></div>
+        </div>
+        
+        <br>
+        
+        <h4>2 col test custom stack early (default value) </h4>
+        Stack point 1 (515px) <input type="number" id="stackpt3_1" name="stackpt1"> 
+        <button onclick="updateattribute('stackpt3_1','stackpt3_2','testlayout3');">Update</button> <br><br>
+        <div id="testlayout3" class="panel hints has-2-col show-width ">
+            <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+        </div>
+        
+        
         <hr>
         
     </div>
 </div>
+<script src="layout.js"></script>
 </body>
 </html>
