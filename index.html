@@ -573,7 +573,7 @@
         <hr>
         </hide>
         
-        <h4>3 col - stack: default: Simulate "col-1-grey col-2-grey col-3-grey block"</h4>
+        <h4>2 col mother component padding in column - Right nested 2 col child"</h4>
         <div class="panel hints has-2-col padding-in-column w1-2">
             <div class="col">
                 <div class="text-component ">
@@ -708,6 +708,20 @@
         <button onclick="updateattribute('stackpt4_1','stackpt4_2','testlayout4');">Apply</button> <br><br>
         <div id="testlayout4" class="panel hints has-2-col show-width ">
             <div class="col"><content>1 col<br>1 col</content></div>
+            <div class="col"><content>2 col<br>2 col</content></div>
+        </div>
+        
+        <h4>2 col test custom stack early (default value) </h4>
+        Stack point 1 (515px) <input type="number" id="stackpt5_1" name="stackpt1" min="0">
+                              <input type="number" id="stackpt5_2" name="stackpt2" min="0" hidden>
+        <button onclick="updateattribute('stackpt5_1','stackpt5_2','testlayout5');">Apply</button> <br><br>
+        <div id="testlayout5" class="panel hints has-2-col show-width ">
+            <div class="col">
+                <div class="panel has-2-col">
+                    <div class="col"><content>1 col<br>1 col</content></div>
+                    <div class="col"><content>2 col<br>2 col</content></div>
+                </div>
+            </div>
             <div class="col"><content>2 col<br>2 col</content></div>
         </div>
         

@@ -162,7 +162,7 @@
     
     /* Padding switch */
     .panel.padding-in-column { padding: 0;  max-width: 100%; min-width: 320px;}
-    .panel.padding-in-column > .col{ padding:var(--padding_v) var(--padding_h); }
+    .panel.padding-in-column > .col{ padding:var(--padding_v) var(--padding_h); /* box-sizing: border-box; */}
     
     .padding-in-column.has-2-col > .col{ width: calc(50% - (var(--gap_h) * 1 / 2) - var(--padding_h) - var(--padding_h)); }
     .padding-in-column.has-3-col > .col{ width: calc(33.3% - (var(--gap_h) * 2 / 3) - var(--padding_h) - var(--padding_h)); }
@@ -254,16 +254,16 @@
     
     /* Stack early trigger 1 */
     .show-width::after { content: attr(style); position: absolute; margin-top: -60px; right: 0; }
-    .has-4-col.stack-pt1 .col { width:calc(50% - (var(--gap_h) / 2) ); } 
-    .has-4-col.stack-pt1 .col:nth-child(2) {margin-right: 0; } 
-    .has-4-col.stack-pt1 .col:nth-child(1n+3) {margin-top: var(--gap_v); }
+    .has-4-col.stack-pt1 > .col { width:calc(50% - (var(--gap_h) / 2) ); } 
+    .has-4-col.stack-pt1 > .col:nth-child(2) {margin-right: 0; } 
+    .has-4-col.stack-pt1 > .col:nth-child(1n+3) {margin-top: var(--gap_v); }
 
     .has-3-col.stack-pt1 > .col { width:calc(50% - (var(--gap_h) / 2) ); } 
     .has-3-col.stack-pt1:not(.w2-1-1) > .col:nth-child(even) {margin-right: 0;} 
     .has-3-col.stack-pt1:not(.w2-1-1) > .col:last-child {margin-top: var(--gap_v); }
 
-    .has-2-col.stack-pt1 .col { width: 100%; margin-right:0;}   
-    .has-2-col.stack-pt1 .col + .col { margin-top: var(--gap_v);}
+    .has-2-col.stack-pt1 > .col { width: 100%; margin-right:0;}   
+    .has-2-col.stack-pt1 > .col + .col { margin-top: var(--gap_v);}
 
     .has-3-col.stack-first.stack-pt1 > .col:first-child { width:100%; margin-right: 0;} 
     .has-3-col.stack-first.stack-pt1 > .col + .col { width:calc(50% - (var(--gap_h) / 2) ); margin-top: var(--gap_v);}
@@ -372,10 +372,10 @@
 
     
     /* Stack early trigger 2 */
-    .has-4-col.stack-pt2 .col { width: 100%; margin-right:0;}   
-    .has-4-col.stack-pt2 .col + .col { margin-top: var(--gap_v);}
-    .has-3-col.stack-pt2 .col { width: 100%; margin-right:0;}   
-    .has-3-col.stack-pt2 .col + .col { margin-top: var(--gap_v);}
+    .has-4-col.stack-pt2 > .col { width: 100%; margin-right:0;}   
+    .has-4-col.stack-pt2 > .col + .col { margin-top: var(--gap_v);}
+    .has-3-col.stack-pt2 > .col { width: 100%; margin-right:0;}   
+    .has-3-col.stack-pt2 > .col + .col { margin-top: var(--gap_v);}
 
     .has-3-col.stack-first.stack-pt2 > .col, 
     .has-3-col.stack-first.stack-pt2 > .col:nth-child(2), 
