@@ -189,4 +189,40 @@
 }
 
 
+/* Test Zed Compact font */
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Zed Display Compact';
+  font-style: normal;
+  font-weight: 700;
+  src: url('webfonts/ZedDisplayCompactLTRIAL-Bold.woff2') format('woff2'); 
+}
+
+/*
+@font-face {
+  font-display: swap; 
+  font-family: 'Zed Display Compact';
+  font-style: normal;
+  font-weight: 600;
+  src: url('webfonts/ZedDisplayCompactLTRIAL-SemiBold.woff2') format('woff2'); 
+}*/
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Zed Display Compact';
+  font-style: normal;
+  font-weight: 500;
+  src: url('webfonts/ZedDisplayCompactLTRIAL-Medium.woff2') format('woff2'); 
+}
+
+@font-face {
+  font-display: swap; 
+  font-family: 'Zed Display Compact';
+  font-style: normal;
+  font-weight: 400;
+  src: url('webfonts/ZedDisplayCompactLTRIAL-Regular.woff2') format('woff2'); 
+}
+
+
 
