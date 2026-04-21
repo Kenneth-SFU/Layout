@@ -70,7 +70,7 @@
         padding: 9px 9px 0px 0px;  display: inline;     /*white-space: pre-wrap;*/
         padding-top: min(max(6px, 0.7vw), 9px);
         padding-right: min(max(6px, 0.7vw), 9px);
-        font-family: countachweb-bold; text-transform: uppercase; font-size: 65px; line-height: 60px; font-weight: 500;
+        font-family: brandfont; text-transform: uppercase; font-size: 65px; line-height: 60px; font-weight: 500;
         color:black;
         /* responsive for include text "undergraduate" */
         font-size: min(max(42px, 4.7vw), 65px);
